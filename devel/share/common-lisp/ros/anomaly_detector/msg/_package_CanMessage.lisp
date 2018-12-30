@@ -1,0 +1,18 @@
+(cl:in-package anomaly_detector-msg)
+(cl:export '(MSGID-VAL
+          MSGID
+          VEHICLESPEED-VAL
+          VEHICLESPEED
+          ENGINESPEED-VAL
+          ENGINESPEED
+          DRIVERDOOROPEN-VAL
+          DRIVERDOOROPEN
+          FRONTPASSENGERDOOROPEN-VAL
+          FRONTPASSENGERDOOROPEN
+          REARLEFTDOOROPEN-VAL
+          REARLEFTDOOROPEN
+          REARRIGHTDOOROPEN-VAL
+          REARRIGHTDOOROPEN
+          TIMESTAMP-VAL
+          TIMESTAMP
+))
