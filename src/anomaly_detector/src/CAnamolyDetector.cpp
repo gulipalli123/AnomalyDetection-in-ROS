@@ -35,53 +35,47 @@ void CAnamolyDetector::inputCallback(const anomaly_detector::CanMessage::ConstPt
   canQueue_.push (*msg);
 }
 
-void CAnamolyDetector::processCanQueue()
+void CAnamolyDetector::processCanQueue(int samplingRate)
 {
 	anomaly_detector::CanMessage msg;
 	anomaly_detector::AnomolyData anomsg;
-	//bool anomalyDetected[SAMPLING_RATE];
 	ros::Rate loop_rate(1);
-	 std::cout<<"THAKUR \n";
-	 int index = 0;
-	 int detectionCount = 0;
+	int index = 0;
+	int detectionCount = 0;
 	while (ros::ok())
 	{
 		while (!canQueue_.empty())
 		{
 			index = 0;
-
-			while (!canQueue_.empty() && index < SAMPLING_RATE)
+			while (!canQueue_.empty() && index < samplingRate)
 			{
 			msg = canQueue_.front();
 
 			if(msg.vehicleSpeed > 0)
 			{
-				std::cout<<"1st Place \n";
 				if(OPEN == msg.driverDoorOpen  || OPEN == msg.frontPassengerDoorOpen ||
 					OPEN == msg.rearLeftDoorOpen || OPEN == msg.rearRightDoorOpen)
 				{
-					std::cout<<"2nd Place \n";
 					detectionCount++;
 					if(detectionCount == 1)
 						index = 0;
+					index++;
 				}
 				else
 				{
-				// reset detection count
-					detectionCount = 0;
-					std::cout<<"3rd Place \n";
+				// reset counts
+					index = detectionCount = 0;
 				}
 			}
-			index++;
-				canQueue_.pop();
+			canQueue_.pop();
 		   }
-			std::cout<<"PANKAJ  THAKUR\n";
-			std::cout << "detection count=" << detectionCount;
-		   if(detectionCount == SAMPLING_RATE)
+		   if(detectionCount == samplingRate)
 		   {
-			   std::cout<<"PANKAJ \n";
+
+			   detectionCount = 0;
 			   anomsg.anomalyStatus = true;
 			   anomsg.timeStamp = msg.timeStamp;
+			   anomsg.msgId = msg.msgId;
 			   anomalyPublisher_.publish(anomsg);
 		   }
 		}
@@ -104,11 +98,22 @@ int main(int argc, char **argv)
    * You must call one of the versions of ros::init() before using any other
    * part of the ROS system.
    */
+	int samplingRate = 0;
+	if (argc != 2)
+	{
+		samplingRate = SAMPLING_RATE;
+	}
+	else
+	{
+	    samplingRate = atoi(argv[1]);
+	}
+
+  ROS_INFO("Sampling Rate: [%d]",  samplingRate);
   ros::init(argc, argv, "anomalyDetector");
 
   CAnamolyDetector anomalyDetectorInst;
 
-  anomalyDetectorInst.processCanQueue();
+  anomalyDetectorInst.processCanQueue(samplingRate);
 
   return 0;
 }

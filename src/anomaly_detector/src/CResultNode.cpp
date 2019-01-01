@@ -20,9 +20,11 @@ CResultNode::~CResultNode() {
 
 void CResultNode::Callback(const anomaly_detector::AnomolyData::ConstPtr& msg)
 {
-	std::cout<<"CResultNode::Callback \n";
-	ROS_INFO("Anomaly Status: [%u]",  msg->anomalyStatus);
-	ROS_INFO("TimeStamp: [%ld]",  msg->timeStamp);
+	ROS_INFO("Anomaly Status: %d",  msg->anomalyStatus);
+	ROS_INFO("Time Received: %u",  msg->timeStamp);
+	ROS_INFO("Message ID: %d", msg->msgId);
+	time_t rawtime = msg->timeStamp;
+	ROS_INFO("Human Readable Time Format: %s", ctime(&rawtime));
 }
 
 

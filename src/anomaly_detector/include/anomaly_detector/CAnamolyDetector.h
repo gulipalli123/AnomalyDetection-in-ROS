@@ -12,6 +12,7 @@
 #include "std_msgs/String.h"
 #include "anomaly_detector/AnomolyData.h"
 #include "anomaly_detector/CanMessage.h"
+#include <string>
 
 #include <sstream>
 
@@ -26,6 +27,8 @@
 
 #define SAMPLING_RATE   3
 #define QUEUE_SIZE 1000
+#define MESSAGE_ID 234
+#define MESSAGE_ID 251
 enum {
  ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT
 };
@@ -43,7 +46,7 @@ class CAnamolyDetector {
 public:
 	CAnamolyDetector();
 	virtual ~CAnamolyDetector();
-	void processCanQueue();
+	void processCanQueue(int );
 };
 
 #endif /* SRC_ANOMALYDETECTOR_SRC_CANAMOLYDETECTOR_H_ */

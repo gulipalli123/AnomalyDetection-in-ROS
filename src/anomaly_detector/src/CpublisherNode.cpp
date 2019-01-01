@@ -36,7 +36,7 @@ bool CpublisherNode::PublishCANData()
 	   msg.rearRightDoorOpen = atol(vec[SEVEN].c_str());
 	   msg.timeStamp = atoi(vec[EIGHT].c_str());
 	   inputPublisher_.publish(msg);
-	   ros::spinOnce();
+	   //ros::spinOnce();
 	   loop_rate.sleep();
 	}
 }

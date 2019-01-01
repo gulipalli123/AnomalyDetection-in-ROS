@@ -9,6 +9,7 @@
 #define SRC_ANOMALYDETECTOR_SRC_CRESULTNODE_H_
 
 #include "ros/ros.h"
+#include <time.h>
 #include "anomaly_detector/AnomolyData.h"
 
 class CResultNode {
