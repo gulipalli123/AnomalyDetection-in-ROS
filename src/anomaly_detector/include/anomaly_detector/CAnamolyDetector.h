@@ -27,8 +27,6 @@
 
 #define SAMPLING_RATE   3
 #define QUEUE_SIZE 1000
-#define MESSAGE_ID 234
-#define MESSAGE_ID 251
 enum {
  ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT
 };

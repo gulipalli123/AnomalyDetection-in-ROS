@@ -18,14 +18,14 @@ CAnamolyDetector::~CAnamolyDetector() {
 
 void CAnamolyDetector::inputCallback(const anomaly_detector::CanMessage::ConstPtr & msg) {
 
-  ROS_INFO("message Id: [%x]", msg - > msgId);
-  ROS_INFO("vehicle speed: [%f]", msg - > vehicleSpeed);
-  ROS_INFO("engine speed: [%f]", msg - > engineSpeed);
-  ROS_INFO("driverDoorOpen: [%u]", msg - > driverDoorOpen);
-  ROS_INFO("frontPassengerDoorOpen: [%u]", msg - > frontPassengerDoorOpen);
-  ROS_INFO("rearLeftDoorOpen: [%u]", msg - > rearLeftDoorOpen);
-  ROS_INFO("rearRightDoorOpen: [%u]", msg - > rearRightDoorOpen);
-  ROS_INFO("timeStamp: [%ld]", msg - > timeStamp);
+  ROS_INFO("message Id: [%x]", msg -> msgId);
+  ROS_INFO("vehicle speed: [%f]", msg -> vehicleSpeed);
+  ROS_INFO("engine speed: [%f]", msg -> engineSpeed);
+  ROS_INFO("driverDoorOpen: [%u]", msg -> driverDoorOpen);
+  ROS_INFO("frontPassengerDoorOpen: [%u]", msg -> frontPassengerDoorOpen);
+  ROS_INFO("rearLeftDoorOpen: [%u]", msg -> rearLeftDoorOpen);
+  ROS_INFO("rearRightDoorOpen: [%u]", msg -> rearRightDoorOpen);
+  ROS_INFO("timeStamp: [%ld]", msg -> timeStamp);
   // Push Message into Queue 
   canQueue_.push( * msg);
 }
