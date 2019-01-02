@@ -1,8 +1,0 @@
-prefix=/home/pankaj/bmw_ws/devel
-
-Name: anomaly_detector
-Description: Description of anomaly_detector
-Version: 0.0.0
-Cflags: -I/home/pankaj/bmw_ws/devel/include -I/home/pankaj/bmw_ws/src/anomaly_detector/include
-Libs: -L/home/pankaj/bmw_ws/devel/lib 
-Requires: roscpp rospy std_msgs message_runtime

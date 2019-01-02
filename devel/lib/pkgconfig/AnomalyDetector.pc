@@ -1,8 +1,0 @@
-prefix=/home/pankaj/bmw_ws/devel
-
-Name: AnomalyDetector
-Description: Description of AnomalyDetector
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/pankaj/bmw_ws/devel/lib 
-Requires: 
