@@ -35,15 +35,15 @@ enum {
    CLOSE, OPEN
 };
 
-class CAnamolyDetector {
+class CAnomolyDetector {
 	std::queue<anomaly_detector::CanMessage> canQueue_;
 	ros::NodeHandle nodeHandle_;
 	ros::Publisher anomalyPublisher_;
 	ros::Subscriber inputSubscriber_;
 	void inputCallback(const anomaly_detector::CanMessage::ConstPtr& msg);
 public:
-	CAnamolyDetector();
-	virtual ~CAnamolyDetector();
+	CAnomolyDetector();
+	virtual ~CAnomolyDetector();
 	void processCanQueue(int );
 };
 

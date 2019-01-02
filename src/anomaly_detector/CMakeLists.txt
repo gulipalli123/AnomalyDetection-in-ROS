@@ -119,7 +119,7 @@ include_directories(
  include
   ${catkin_INCLUDE_DIRS}
 )
-
+include_directories (/anomaly_detector/include/)
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/anomaly_detector.cpp
@@ -155,7 +155,7 @@ set(SOURCE_FILES src/CpublisherNode.cpp
 				 src/CcsvReader.cpp) 
 
 message (${catkin_LIBRARIES})
-add_executable(AnamolyDetector src/CAnamolyDetector.cpp)
+add_executable(AnamolyDetector src/CAnomolyDetector.cpp)
 target_link_libraries(AnamolyDetector ${catkin_LIBRARIES})
 add_dependencies(AnamolyDetector anomaly_detector_generate_messages_cpp)
 
@@ -216,10 +216,11 @@ add_dependencies(PublisherNode anomaly_detector_generate_messages_cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_anomaly_detector.cpp)
-# if(TARGET ${PROJECT_NAME}-test)
-#   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
-# endif()
+
+ catkin_add_gtest(${PROJECT_NAME}-test test/test_anomaly_detector.cpp)
+if(TARGET ${PROJECT_NAME}-test)
+  target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
+endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)

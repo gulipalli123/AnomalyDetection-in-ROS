@@ -5,7 +5,7 @@
  *      Author: Kiran and Pankaj
  */
 
-#include "../../anomaly_detector/include/anomaly_detector/CcsvReader.h"
+#include "anomaly_detector/CcsvReader.h"
 
 CcsvReader::CcsvReader(std::string filename, std::string delm )
 						:fileName(filename), delimeter(delm){

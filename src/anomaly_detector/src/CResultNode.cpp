@@ -5,13 +5,12 @@
  *      Author: Kiran and Pankaj
  */
 
-#include "../../anomaly_detector/include/anomaly_detector/CResultNode.h"
+#include "anomaly_detector/CResultNode.h"
 
 CResultNode::CResultNode() {
 	// TODO Auto-generated constructor stub
 
 	outputSubscriber_ = nodeHandle_.subscribe("anomaly", 1000, &CResultNode::Callback, this);
-	std::cout<<"CResultNode::CResultNode \n";
 }
 
 CResultNode::~CResultNode() {

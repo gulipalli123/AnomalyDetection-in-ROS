@@ -5,18 +5,18 @@
  *     Author: Pankaj and Kiran
  */
 
-#include "../../anomaly_detector/include/anomaly_detector/CAnamolyDetector.h"
+#include "anomaly_detector/CAnomolyDetector.h"
 
-CAnamolyDetector::CAnamolyDetector() {
+CAnomolyDetector::CAnomolyDetector() {
   anomalyPublisher_ = nodeHandle_.advertise < anomaly_detector::AnomolyData > ("anomaly", QUEUE_SIZE);
-  inputSubscriber_ = nodeHandle_.subscribe("input", 1000, & CAnamolyDetector::inputCallback, this);
+  inputSubscriber_ = nodeHandle_.subscribe("input", 1000, & CAnomolyDetector::inputCallback, this);
 }
 
-CAnamolyDetector::~CAnamolyDetector() {
+CAnomolyDetector::~CAnomolyDetector() {
   // TODO Destruction Part
 }
 
-void CAnamolyDetector::inputCallback(const anomaly_detector::CanMessage::ConstPtr & msg) {
+void CAnomolyDetector::inputCallback(const anomaly_detector::CanMessage::ConstPtr & msg) {
 
   ROS_INFO("message Id: [%x]", msg -> msgId);
   ROS_INFO("vehicle speed: [%f]", msg -> vehicleSpeed);
@@ -30,7 +30,7 @@ void CAnamolyDetector::inputCallback(const anomaly_detector::CanMessage::ConstPt
   canQueue_.push( * msg);
 }
 
-void CAnamolyDetector::processCanQueue(int samplingRate) {
+void CAnomolyDetector::processCanQueue(int samplingRate) {
   anomaly_detector::CanMessage msg;
   anomaly_detector::AnomolyData anomsg;
   ros::Rate loop_rate(1);
@@ -71,16 +71,6 @@ void CAnamolyDetector::processCanQueue(int samplingRate) {
 }
 
 int main(int argc, char ** argv) {
-  /**
-   * The ros::init() function needs to see argc and argv so that it can perform
-   * any ROS arguments and name remapping that were provided at the command line.
-   * For programmatic remappings you can use a different version of init() which takes
-   * remappings directly, but for most command-line programs, passing argc and argv is
-   * the easiest way to do it.  The third argument to init() is the name of the node.
-   *
-   * You must call one of the versions of ros::init() before using any other
-   * part of the ROS system.
-   */
   int samplingRate = 0;
   if (argc != 2) {
     samplingRate = SAMPLING_RATE;
@@ -91,7 +81,7 @@ int main(int argc, char ** argv) {
   ROS_INFO("Sampling Rate: [%d]", samplingRate);
   ros::init(argc, argv, "anomalyDetector");
 
-  CAnamolyDetector anomalyDetectorInst;
+  CAnomolyDetector anomalyDetectorInst;
 
   anomalyDetectorInst.processCanQueue(samplingRate);
 

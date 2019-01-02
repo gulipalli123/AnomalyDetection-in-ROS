@@ -5,8 +5,8 @@
  *      Author: Pankaj and Kiran
  */
 
-#include "../../anomaly_detector/include/anomaly_detector/CpublisherNode.h"
-#include "../../anomaly_detector/include/anomaly_detector/CcsvReader.h"
+#include "anomaly_detector/CpublisherNode.h"
+#include "anomaly_detector/CcsvReader.h"
 
 CpublisherNode::CpublisherNode() {
 	inputPublisher_ = nodeHandle_.advertise<anomaly_detector::CanMessage>("input", 1000);
