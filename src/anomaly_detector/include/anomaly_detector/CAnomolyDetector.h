@@ -27,9 +27,6 @@
 
 #define SAMPLING_RATE   3
 #define QUEUE_SIZE 1000
-enum {
- ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT
-};
 
 enum {
    CLOSE, OPEN

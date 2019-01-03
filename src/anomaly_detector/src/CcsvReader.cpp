@@ -8,16 +8,16 @@
 #include "anomaly_detector/CcsvReader.h"
 
 CcsvReader::CcsvReader(std::string filename, std::string delm )
-						:fileName(filename), delimeter(delm){
+						:fileName_(filename), delimeter_(delm){
 }
 
 
-std::vector<stringvectors> CcsvReader::getData()
+std::vector<vectorOfStrings> CcsvReader::getData()
 {
 	std::ifstream ifs;
-	ifs.open(fileName.c_str(), std::ifstream::in);
+	ifs.open(fileName_.c_str(), std::ifstream::in);
 
-	std::vector<stringvectors > dataList;
+	std::vector<vectorOfStrings > dataList;
 
 	std::string line = "";
 	// Ignore first line as it does not have any data
@@ -26,8 +26,8 @@ std::vector<stringvectors> CcsvReader::getData()
 	// Iterate through each line and split the content using delimeter
 	while (getline(ifs, line))
 	{
-		std::vector<std::string> vec;
-		boost::algorithm::split(vec, line, boost::is_any_of(delimeter));
+		vectorOfStrings vec;
+		boost::algorithm::split(vec, line, boost::is_any_of(delimeter_));
 		dataList.push_back(vec);
 	}
 	// Close the File

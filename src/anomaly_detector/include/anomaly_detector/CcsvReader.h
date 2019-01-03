@@ -18,7 +18,7 @@
 // typedefs, MACROS and enums
 
 #define BASE 16
-typedef std::vector<std::string> stringvectors;
+typedef std::vector<std::string> vectorOfStrings;
 enum
 {
     ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT
@@ -26,13 +26,13 @@ enum
 
 class CcsvReader {
 private:
-	std::string fileName;
-	std::string delimeter;
+	std::string fileName_;
+	std::string delimeter_;
 
 public:
 	CcsvReader(std::string filename, std::string delm = ",");
 	virtual ~CcsvReader();
-	std::vector< stringvectors > getData();
+	std::vector< vectorOfStrings > getData();
 };
 
 #endif /* SRC_ANOMALYDETECTOR_SRC_CCSVREADER_H_ */

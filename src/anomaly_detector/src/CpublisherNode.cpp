@@ -19,12 +19,12 @@ CpublisherNode::~CpublisherNode() {
 bool CpublisherNode::PublishCANData()
 {
 	CcsvReader reader("/home/pankaj/bmw_ws/data.csv");
-	std::vector<stringvectors> dataList = reader.getData();
+	std::vector<vectorOfStrings> dataList = reader.getData();
 	ros::Rate loop_rate(1);
 	anomaly_detector::CanMessage msg;
 
 	    // Send the input data to the Anomaly Detector node
-	for(stringvectors vec : dataList)
+	for(vectorOfStrings vec : dataList)
 	{
 
 	   msg.msgId =   std::stoi(vec[ONE], 0, BASE);
