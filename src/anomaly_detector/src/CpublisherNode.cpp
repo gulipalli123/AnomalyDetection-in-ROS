@@ -18,7 +18,7 @@ CpublisherNode::~CpublisherNode() {
 
 bool CpublisherNode::PublishCANData()
 {
-	CcsvReader reader("/home/pankaj/bmw_ws/data.csv");
+	CcsvReader reader("/etc/tmp/anomalyInserted.csv");
 	std::vector<vectorOfStrings> dataList = reader.getData();
 	ros::Rate loop_rate(1);
 	anomaly_detector::CanMessage msg;

@@ -172,7 +172,10 @@ add_executable(PublisherNode ${SOURCE_FILES} )
 target_link_libraries(PublisherNode ${catkin_LIBRARIES})
 add_dependencies(PublisherNode anomaly_detector_generate_messages_cpp)
 
-
+message (${catkin_LIBRARIES})
+add_executable(AnamolyInserter src/AnamolyInserterNode.cpp)
+target_link_libraries(AnamolyInserter ${catkin_LIBRARIES})
+add_dependencies(AnamolyInserter anomaly_detector_generate_messages_cpp)
 
 
 
@@ -216,7 +219,6 @@ add_dependencies(PublisherNode anomaly_detector_generate_messages_cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-
  catkin_add_gtest(${PROJECT_NAME}-test test/test_anomaly_detector.cpp)
 if(TARGET ${PROJECT_NAME}-test)
   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
