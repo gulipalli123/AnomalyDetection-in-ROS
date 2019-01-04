@@ -1,0 +1,50 @@
+This Project creates a Ros new package with name anomaly_detector.
+
+ 
+
+Inside anomaly_detector package there are 3 Nodes and one Executable, executable insert the data into CSV.
+
+ 
+
+PublisherNode: This node read the CSV file and anomaly inserted by  AnamolyInserter and publish CAN data to topic.
+
+
+AnamalyDetector:  Anomaly Detector node has the logic to determine if anomaly is present or not, in case if anomaly is
+
+Present it will publish to topic and this topic will be subscribed by Result Node.
+
+ 
+
+This node does Anomaly detection on the basis of SAMPLE rate, if User does not specify any value default rate is 3, else default rate would be set to Command Line Argument passed
+
+
+AnamolyInserter; This Executable Inserts the anomaly  to the existing CSV data.
+
+
+ResultNode : This node will subscribe to the topic and will display the result with Time Frame published by AnamalyDetector node.
+
+ 
+
+ 
+
+Prerequisites:
+
+ 
+
+Need to place the input csv file into /etc/tmp/anomaly.csv, This folder should have appropriate permissions to read and write from CSV.
+
+ 
+
+
+1.      Order of Running the node.
+
+2.      Roscore (Will run the master Node)
+
+3.      ResultNode(rosrun anomaly_detector ResultNode)
+
+4.      AnamalyDetector(rosrun anomaly_detector AnamolyDetector 3/5/7(provide the sample rate here))
+
+5.      AnamolyInserter(rosrun anomaly_detector AnamolyInserter 3/5/7(provide the sample rate here))
+
+6.      PublisherNode(rosrun anomaly_detector PublisherNode)
+
